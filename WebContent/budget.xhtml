@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Budgets</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:outputLabel value="Budgets" />
+		<p:dataTable var="budget" value="#{budgetController.budgets}"
+			style="width: 500px; margin-top: 20px;">
+			<p:column headerText="Spieler">
+				<h:outputText value="#{budget.user.name}" />
+			</p:column>
+			<p:column headerText="Budget">
+				<h:outputText value="#{budget.budget}">
+					<f:convertNumber currencySymbol="€" groupingUsed="true"
+						maxFractionDigits="2" type="currency" />
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+		<p:commandButton value="Update Budgets" style="margin-top: 20px;"
+			action="#{budgetController.updateBudgets()}" update="@form" />
+	</h:form>
+</h:body>
+</html>

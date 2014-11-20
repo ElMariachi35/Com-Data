@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Transfers</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:outputLabel value="Transfers"/>
+		<p:dataTable var="transfer" value="#{rawTransferController.rawTransfers}" style="width: 1200px;">
+			<p:column headerText="Spieler">
+				<h:outputText value="#{transfer.playerName}" />
+			</p:column>
+			<p:column headerText="From">
+				<h:outputText value="#{transfer.fromUser}" />
+			</p:column>
+			<p:column headerText="To">
+				<h:outputText value="#{transfer.toUser}" />
+			</p:column>
+			<p:column headerText="Preis">
+				<h:outputText value="#{transfer.transferFee}" />
+			</p:column>
+		</p:dataTable>
+		<p:commandButton value="Parse Transfers" action="#{rawTransferController.parseTransfers()}"/>
+	</h:form>
+</h:body>
+</html>
