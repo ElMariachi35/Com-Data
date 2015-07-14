@@ -24,7 +24,7 @@ public class RawTransferController implements Serializable {
 
 	@PostConstruct
 	public void initializeRawTransfers() {
-		rawTransfers = rawTransferService.findLatest(25);
+		rawTransfers = rawTransferService.findLatest(100);
 	}
 
 	@Transactional

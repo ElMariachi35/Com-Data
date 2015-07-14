@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import model.BaseEntity;
 
 @Entity
-@Table(name = "rawtransfer")
 @NamedQueries({
 		@NamedQuery(name = RawTransfer.SUM_OF_PURCHASES_BY_USER, query = "SELECT SUM(r.transferFee) FROM RawTransfer r WHERE r.toUser=:"
 				+ RawTransfer.PARAM_USER),

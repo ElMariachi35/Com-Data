@@ -42,8 +42,7 @@ public class TransferParser implements Serializable {
     }
 
     private List<Element> extractNewsElements() throws InterruptedException, IOException {
-        String newsPage = getSourceOfNewsPage();
-//        String newsPage = readFile("C:\\Users\\Gerald\\Desktop\\Comunio\\allTransfers.html", Charset.defaultCharset());
+        String newsPage = readFile("/home/ghoheneder/Documents/transfers.txt", Charset.defaultCharset());
         Document document = Jsoup.parse(newsPage);
         Element newsMessages = document.select("#postwrap").first();
         Thread.sleep(3000);

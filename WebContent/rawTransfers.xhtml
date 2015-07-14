@@ -24,6 +24,11 @@
 			<p:column headerText="Preis">
 				<h:outputText value="#{transfer.transferFee}" />
 			</p:column>
+			<p:column headerText="Date">
+				<h:outputText value="#{transfer.transferDate}" >
+					<f:convertDateTime locale="de"/>
+				</h:outputText>
+			</p:column>
 		</p:dataTable>
 		<p:commandButton value="Parse Transfers" action="#{rawTransferController.parseTransfers()}"/>
 	</h:form>
