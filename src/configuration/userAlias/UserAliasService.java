@@ -1,4 +1,4 @@
-package userAlias;
+package configuration.userAlias;
 
 import javax.inject.Inject;
 

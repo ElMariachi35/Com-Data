@@ -1,4 +1,4 @@
-package userAlias;
+package configuration.userAlias;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,13 +10,13 @@ import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
 
-import service.entity.UserService;
+import configuration.user.UserService;
 import model.User;
 import model.UserAlias;
 import cdi.Controller;
 
 @Controller
-public class UserAliasController implements Serializable {
+public class UserConfigurationController implements Serializable {
 
 	@Inject
 	private UserService userService;
@@ -27,10 +27,13 @@ public class UserAliasController implements Serializable {
 	private String userId;
 	private String userAlias;
 
+	private User newUser;
+
 	@PostConstruct
 	public void initializeController() {
 		userId = "";
 		userAlias = "";
+		setNewUser(new User());
 		setUserList(userService.findAll());
 	}
 
@@ -45,7 +48,7 @@ public class UserAliasController implements Serializable {
 	@Transactional
 	public void addAlias() {
 		UserAlias alias = new UserAlias();
-		if(StringUtils.EMPTY.equals(userId)){
+		if (StringUtils.EMPTY.equals(userId)) {
 			return;
 		}
 		User user = userService.findById(Long.valueOf(userId));
@@ -55,6 +58,15 @@ public class UserAliasController implements Serializable {
 		alias.setUser(user);
 		alias.setAlias(userAlias);
 		userAliasService.save(alias);
+	}
+
+	@Transactional
+	public void addNewUser() {
+		if(StringUtils.EMPTY.equals(newUser.getName())){
+			throw new IllegalStateException("Name of user cannot be emtpy!");
+		}
+		userService.save(newUser);
+		newUser = new User();
 	}
 
 	public List<User> getUserList() {
@@ -79,5 +91,13 @@ public class UserAliasController implements Serializable {
 
 	public void setUserAlias(String userAlias) {
 		this.userAlias = userAlias;
+	}
+
+	public User getNewUser() {
+		return newUser;
+	}
+
+	public void setNewUser(User newUser) {
+		this.newUser = newUser;
 	}
 }

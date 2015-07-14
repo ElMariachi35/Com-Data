@@ -11,12 +11,13 @@ import javax.persistence.OneToMany;
 public class User extends BaseEntity {
 
 	private String name;
-	private BigDecimal startCapital;
-	private BigDecimal balanceOffset;
+	private BigDecimal startCapital = BigDecimal.ZERO;
+	private BigDecimal balanceOffset = BigDecimal.ZERO;
 	private long points;
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<UserAlias> userAlias;
-	
+	private Long pId;
+
 	public User() {
 	}
 
@@ -64,4 +65,11 @@ public class User extends BaseEntity {
 		this.userAlias = userAlias;
 	}
 
+	public Long getpId() {
+		return pId;
+	}
+
+	public void setpId(Long pId) {
+		this.pId = pId;
+	}
 }

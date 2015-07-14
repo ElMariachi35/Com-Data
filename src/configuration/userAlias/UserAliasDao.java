@@ -1,4 +1,4 @@
-package userAlias;
+package configuration.userAlias;
 
 import model.UserAlias;
 import dao.EntityDao;

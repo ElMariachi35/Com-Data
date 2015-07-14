@@ -1,13 +1,13 @@
-package service.entity;
+package configuration.user;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import service.entity.EntityService;
 import model.User;
 import cdi.Service;
 import dao.EntityDao;
-import dao.UserDao;
 
 @Service
 public class UserService extends EntityService<User>{
@@ -18,6 +18,12 @@ public class UserService extends EntityService<User>{
 
 	public List<User> findAll() {
 		return userDao.findAll();
+	}
+	
+	public void saveAll(List<User> userList) {
+		for (User user : userList) {
+			save(user);
+		}
 	}
 
 	@Override

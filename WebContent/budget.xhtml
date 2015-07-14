@@ -19,7 +19,7 @@
 			<p:column headerText="Budget">
 				<h:outputText value="#{budget.budget}">
 					<f:convertNumber currencySymbol="€" groupingUsed="true"
-						maxFractionDigits="2" type="currency" />
+						maxFractionDigits="2" type="currency" pattern="#,##0.00" />
 				</h:outputText>
 			</p:column>
 		</p:dataTable>

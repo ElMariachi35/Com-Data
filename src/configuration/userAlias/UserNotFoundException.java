@@ -1,4 +1,4 @@
-package userAlias;
+package configuration.userAlias;
 
 
 public class UserNotFoundException extends RuntimeException {

@@ -6,8 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import configuration.user.UserService;
 import model.User;
-import service.entity.UserService;
 import cdi.Controller;
 
 @Controller
