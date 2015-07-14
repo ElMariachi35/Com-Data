@@ -68,6 +68,11 @@ public class UserConfigurationController implements Serializable {
 		userService.save(newUser);
 		newUser = new User();
 	}
+	
+	@Transactional
+	public void saveAllUsers() {
+		userService.saveAll(userList);
+	}
 
 	public List<User> getUserList() {
 		return userList;
